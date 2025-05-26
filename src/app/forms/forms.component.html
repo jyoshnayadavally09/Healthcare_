@@ -1,0 +1,116 @@
+<p>forms works!</p>
+<div>
+  <form #form="ngForm">
+    <!-- Username Field -->
+    <div>
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="username"
+        #usernameInput="ngModel"
+        required
+      />
+      <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
+        Username is required
+      </div>
+    </div>
+
+    <!-- Email Field -->
+    <div>
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        #emailInput="ngModel"
+        required
+        email
+      />
+      <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+        <div *ngIf="emailInput.errors?.['email']">Invalid email</div>
+        <div *ngIf="emailInput.errors?.['required']">Email is mandatory</div>
+      </div>
+    </div>
+
+    <!-- Guardian Field -->
+    <div>
+      <label for="guardian">Guardian:</label>
+      <input
+        type="text"
+        id="guardian"
+        name="guardian"
+        [(ngModel)]="guardian"
+        #guardianInput="ngModel"
+        required
+      />
+      <div *ngIf="guardianInput.invalid && (guardianInput.dirty || guardianInput.touched)">
+        Guardian name is required
+      </div>
+    </div>
+
+    <!-- Age Field -->
+    <div>
+      <label for="age">Age:</label>
+      <input
+        type="number"
+        id="age"
+        name="age"
+        [(ngModel)]="age"
+        #ageInput="ngModel"
+        required
+        min="0"
+      />
+      <div *ngIf="ageInput.invalid && (ageInput.dirty || ageInput.touched)">
+        <div *ngIf="ageInput.errors?.['required']">Age is required</div>
+        <div *ngIf="ageInput.errors?.['min']">Age cannot be negative</div>
+      </div>
+    </div>
+
+    <!-- Diagnosis Field -->
+    <div>
+      <label for="diagnosis">Diagnosis:</label>
+      <textarea
+        id="diagnosis"
+        name="diagnosis"
+        [(ngModel)]="diagnosis"
+        #diagnosisInput="ngModel"
+        required
+      ></textarea>
+      <div *ngIf="diagnosisInput.invalid && (diagnosisInput.dirty || diagnosisInput.touched)">
+        Diagnosis is required
+      </div>
+    </div>
+
+    <!-- Contact Field -->
+    <div>
+      <label for="contact">Contact:</label>
+      <input
+        type="tel"
+        id="contact"
+        name="contact"
+        [(ngModel)]="contact"
+        #contactInput="ngModel"
+        required
+        pattern="^[0-9]{10}$"
+      />
+      <div *ngIf="contactInput.invalid && (contactInput.dirty || contactInput.touched)">
+        <div *ngIf="contactInput.errors?.['required']">Contact number is required</div>
+        <div *ngIf="contactInput.errors?.['pattern']">Contact must be 10 digits</div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+  </form>
+</div>
+<hr/>
+<div>
+  <h2> Get The patient </h2>
+  <div>
+    <label for ="patientid"> Patient Id :</label> 
+    <input type ="text" id = "patientid" name = "patientid" [(ngModel)]="patiendById" #patientidinput ="ngModel"/>
+    <button (click) ="fetchPatientId">Get Patient </button>
+   </div>
+</div>

@@ -1,0 +1,56 @@
+<p>contact works!</p>
+<form #contactForm="ngForm"(ngSubmit)="onSubmit(contactForm)">
+    <div>
+        <label for="fullname">Full Name:</label>
+        <input type="text"
+         id="fullname"
+          name="fullname" 
+          ngModel 
+          required
+          #fullname="ngModel"
+          />
+        <div *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)"
+        class="alert">
+    </div>
+    <br>
+     <label for="id">id:</label>
+        <input type="text"
+         id="id"
+          name="id" 
+          ngModel 
+          required
+          #id="ngModel"
+          />
+        <div *ngIf="id.invalid && (id.dirty || id.touched)"
+        class="alert">
+    </div>
+    <br>
+  <div>
+    <label for="diagnous">Diagnous:</label>
+    <input type="text"
+           id="diagnous"
+           name="diagnous"
+           ngModel 
+           required
+           #diagnous="ngModel" />
+    <div *ngIf="diagnous.invalid && (diagnous.dirty || diagnous.touched)"
+         class="alert">
+    </div>
+</div>
+<div>
+    <br>
+    <label for="guardian">Guardian:</label>
+    <input type="text"
+           id="guardian"
+           name="guardian"
+           ngModel 
+           required
+           #guardian="ngModel" />
+    <div *ngIf="guardian.invalid && (guardian.dirty || guardian.touched)"
+         class="alert">
+    </div>
+</div>
+
+    </div>
+    <button type="submit">Send!</button>
+</form>
